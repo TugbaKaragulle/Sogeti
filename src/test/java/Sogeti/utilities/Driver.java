@@ -42,6 +42,7 @@ public class Driver {
                     options.addArguments("--window-size=1920,1080"); // ekran boyutu belirle
                     options.addArguments("--disable-gpu"); // bazı sistemlerde gerekli
                     options.addArguments("--no-sandbox"); // Jenkins Linux/CI için gerekebilir
+                    options.addArguments("--disable-dev-shm-usage");
                     driverThread.set(new ChromeDriver(options));
                     break;
                 default:
