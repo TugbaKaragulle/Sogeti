@@ -42,7 +42,7 @@ public class BewerbungsFomular {
             uploadCV();
             selectLocation();
             acceptTerms();
-            ReusableMethods.waitForSeconds(2);
+            ReusableMethods.waitForSeconds(4);
             log.info("Formular erfolgreich ausgefüllt.");
         } catch (Exception e) {
             log.error("Fehler beim Ausfüllen des Formulars.", e);
@@ -62,25 +62,25 @@ public class BewerbungsFomular {
 
     private void enterFirstName() {
         ReusableMethods.sendKeys(vorname, faker.name().firstName());
-        ReusableMethods.waitForSeconds(3);
+        ReusableMethods.waitForSeconds(4);
         log.info("Vorname eingegeben.");
     }
 
     private void enterLastName() {
         ReusableMethods.sendKeys(nachname, faker.name().lastName());
-        ReusableMethods.waitForSeconds(3);
+        ReusableMethods.waitForSeconds(4);
         log.info("Nachname eingegeben.");
     }
 
     private void enterEmail() {
         ReusableMethods.sendKeys(email, faker.internet().emailAddress());
-        ReusableMethods.waitForSeconds(3);
+        ReusableMethods.waitForSeconds(4);
         log.info("Email eingegeben.");
     }
 
     private void enterPhoneNumber() {
         ReusableMethods.sendKeys(telefonNummer, faker.phoneNumber().phoneNumber());
-        ReusableMethods.waitForSeconds(3);
+        ReusableMethods.waitForSeconds(4);
         log.info("Telefonnummer eingegeben.");
     }
 
@@ -89,7 +89,7 @@ public class BewerbungsFomular {
             String absolutePath = "C:/Users/Tugba/IdeaProjects/Sogeti/Test Sogeti.docx";
             WebElement cvInput = driver.findElement(lebenslauf);
             cvInput.sendKeys(absolutePath);
-            ReusableMethods.waitForSeconds(3);
+            ReusableMethods.waitForSeconds(4);
             log.info("Lebenslauf hochgeladen.");
         } catch (Exception e) {
             log.error("Fehler beim Hochladen des Lebenslaufs.", e);
@@ -99,13 +99,13 @@ public class BewerbungsFomular {
 
     private void selectLocation() {
         ReusableMethods.clickElement(standortFrankfurt);
-        ReusableMethods.waitForSeconds(3);
+        ReusableMethods.waitForSeconds(4);
         log.info("Standort 'Frankfurt' ausgewählt.");
     }
 
     private void acceptTerms() {
         ReusableMethods.clickElement(datenSchutz);
-        ReusableMethods.waitForSeconds(3);
+        ReusableMethods.waitForSeconds(4);
         log.info("Datenschutz akzeptiert.");
     }
 

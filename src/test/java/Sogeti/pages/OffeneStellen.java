@@ -37,9 +37,9 @@ public class OffeneStellen {
         try {
             ReusableMethods.waitForElementToBeClickable(driver, suchFeld, 10);
             ReusableMethods.sendKeys(suchFeld, jobName);
-            ReusableMethods.waitForSeconds(1);
+            ReusableMethods.waitForSeconds(4);
             ReusableMethods.clickElement(searchButton);
-            ReusableMethods.waitForSeconds(2);
+            ReusableMethods.waitForSeconds(4);
             log.info("Job-Suche mit Begriff '{}' durchgeführt.", jobName);
         } catch (Exception e) {
             log.error("Fehler bei Job-Suche mit '{}'.", jobName, e);
@@ -53,7 +53,7 @@ public class OffeneStellen {
             actions.clickAndHold(driver.findElement(standort)).perform();
             ReusableMethods.waitForElementToBeClickable(driver, frankfurt, 10);
             ReusableMethods.clickElementByJS(frankfurt);
-            ReusableMethods.waitForSeconds(2);
+            ReusableMethods.waitForSeconds(4);
             log.info("Standort 'Frankfurt' ausgewählt.");
         } catch (Exception e) {
             log.error("Fehler beim Auswählen des Standorts.", e);
@@ -67,7 +67,7 @@ public class OffeneStellen {
             actions.clickAndHold(driver.findElement(vertragsart)).perform();
             ReusableMethods.waitForElementToBeClickable(driver, fullTime, 10);
             ReusableMethods.clickElementByJS(fullTime);
-            ReusableMethods.waitForSeconds(2);
+            ReusableMethods.waitForSeconds(4);
             log.info("Vertragsart 'Full-time' ausgewählt.");
         } catch (Exception e) {
             log.error("Fehler beim Auswählen der Vertragsart.", e);
@@ -113,19 +113,18 @@ public class OffeneStellen {
         }
     }
 
-    // =======================
-    // Scroll / Mehr laden
-    // =======================
-
+    // Scroll and Mehr laden
     public void scrollAndLoadMore() {
         try {
             JavascriptUtils.seiteLangsamNachUntenScrollen(driver, 20);
             ReusableMethods.waitForElementToBeClickable(driver, mehrLaden, 10);
+            ReusableMethods.waitForSeconds(2);
             ReusableMethods.clickElement(mehrLaden);
             ReusableMethods.waitForSeconds(2);
             JavascriptUtils.seiteLangsamNachUntenScrollen(driver, 5);
-            JavascriptUtils.scrollToVisibleElement(driver, driver.findElement(suchFeld));
             ReusableMethods.waitForSeconds(2);
+            JavascriptUtils.scrollToVisibleElement(driver, driver.findElement(suchFeld));
+            ReusableMethods.waitForSeconds(4);
             log.info("Seite gescrollt und 'Mehr laden' geklickt.");
         } catch (Exception e) {
             log.error("Fehler beim Scrollen und Laden weiterer Jobs.", e);

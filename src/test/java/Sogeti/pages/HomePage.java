@@ -29,7 +29,7 @@ public class HomePage {
 
     // Cookies Entfernung
     public void removeCookies() {
-        ReusableMethods.waitForSeconds(3);
+        ReusableMethods.waitForSeconds(4);
         try {
             WebElement shadow = driver.findElement(shadowhost);
             SearchContext shadowRoot = shadow.getShadowRoot();
@@ -55,7 +55,7 @@ public class HomePage {
         WebElement element = driver.findElement(locator);
         new Actions(driver).moveToElement(element).perform();
         log.info("Maus über '{}' bewegt.", headerName);
-        ReusableMethods.waitForSeconds(2);
+        ReusableMethods.waitForSeconds(4);
     }
 
     // Hilfsmethode: Header-Name -> Locator
