@@ -37,7 +37,12 @@ public class Driver {
                     driverThread.set(new FirefoxDriver());
                     break;
                 case "headless":
-                    driverThread.set(new ChromeDriver(new ChromeOptions().addArguments("--headless")));
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--headless=new"); // yeni headless mod
+                    options.addArguments("--window-size=1920,1080"); // ekran boyutu belirle
+                    options.addArguments("--disable-gpu"); // bazı sistemlerde gerekli
+                    options.addArguments("--no-sandbox"); // Jenkins Linux/CI için gerekebilir
+                    driverThread.set(new ChromeDriver(options));
                     break;
                 default:
                     driverThread.set(new ChromeDriver());

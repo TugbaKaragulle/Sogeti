@@ -30,6 +30,7 @@ public class Karriere {
     public void clickCareerMenu(String menuName) {
         By locator = getMenuLocator(menuName);
         try {
+            ReusableMethods.waitForElementToBeClickable(driver,locator,10);
             ReusableMethods.clickElementByJS(locator);
             ReusableMethods.waitForSeconds(2);
             log.info("Erfolgreich auf '{}' geklickt.", menuName);
