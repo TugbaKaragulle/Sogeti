@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
 public class Karriere {
@@ -31,7 +32,9 @@ public class Karriere {
         By locator = getMenuLocator(menuName);
         try {
             ReusableMethods.waitForElementToBeClickable(driver,locator,10);
-            ReusableMethods.clickElementByJS(locator);
+            Actions actions = new Actions(Driver.getDriver());
+            actions.click(driver.findElement(locator)).perform();
+           // ReusableMethods.clickElementByJS(locator);
             ReusableMethods.waitForSeconds(2);
             log.info("Erfolgreich auf '{}' geklickt.", menuName);
         } catch (NoSuchElementException e) {
