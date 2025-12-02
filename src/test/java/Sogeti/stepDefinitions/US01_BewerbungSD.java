@@ -1,60 +1,53 @@
 package Sogeti.stepDefinitions;
 
 import Sogeti.pages.AllPages;
-import Sogeti.utilities.ReusableMethods;
 import io.cucumber.java.en.*;
 
 public class US01_BewerbungSD {
 
-    AllPages allPages =new AllPages();
+    AllPages allPages = new AllPages();
 
-    @When("Der Benutzer mit der Maus über den Menüpunkt {string} fährt")
-    public void der_benutzer_mit_der_maus_über_den_menüpunkt_fährt(String title) {
-        allPages.getHomePage().moveToHeader(title);
+    @When("Der Benutzer fährt mit der Maus über den Menüpunkt {string}")
+    public void der_benutzer_fährt_mit_der_maus_über_den_menüpunkt(String menu) {
+        allPages.getHomePage().hoverOverHeader(menu); // HomePage'deki yeni method
+    }
+    @And("Klickt auf den Link {string}")
+    public void klickt_auf_den_link(String menuName) {
+        allPages.getKarriere().clickCareerMenu(menuName); // Karriere sayfasındaki yeni method
+    }
+    @And("Scrollt langsam bis zum Ende der Stellenanzeigen")
+    public void scrollt_langsam_bis_zum_ende_der_stellenanzeigen() {
+        allPages.getOffeneStellen().scrollAndLoadMore();
+    }
+    @And("Gibt im Suchfeld den Begriff {string} ein und drückt Enter")
+    public void gibt_im_suchfeld_den_begriff_ein_und_drückt_enter(String jobName) {
+        allPages.getOffeneStellen().searchJob(jobName);
+    }
+    @And("Wählt im Filter Standort {string} aus")
+    public void wählt_im_filter_standort_aus(String string) {
+        allPages.getOffeneStellen().selectLocation();
+    }
+    @And("Wählt im Filter Vertragsart {string} aus")
+    public void wählt_im_filter_vertragsart_aus(String string) {
+        allPages.getOffeneStellen().selectContractType();
+    }
+    @And("Klickt auf den ersten Jobtitel, der {string} enthält")
+    public void klickt_auf_den_ersten_jobtitel_der_enthält(String keyword) {
+        allPages.getOffeneStellen().selectJob(keyword);
+    }
+    @And("Klickt auf Jetzt bewerben")
+    public void klickt_auf_jetzt_bewerben() {
+        allPages.getOffeneStellen().clickApplyNow();
+    }
+    @And("Füllt das Bewerbungsformular aus")
+    public void füllt_das_bewerbungsformular_aus() {
+        allPages.getBewerbungsFomular().fillForm();
+    }
 
-    }
-    @And("Auf den Link {string} klickt")
-    public void auf_den_link_klickt(String menuName) {
-        allPages.getKarriere().moveToHeader(menuName);
-        ReusableMethods.waitForSeconds(2);
-    }
-    @And("Der Benutzer langsam bis zum Ende aller Stellenanzeigen scrollt")
-    public void der_benutzer_langsam_bis_zum_ende_aller_stellenanzeigen_scrollt() {
-        allPages.getOffeneStellen().scrollToElement();
-    }
-    @When("Der Benutzer im Suchfeld den Begriff {string} eingibt und die Enter-Taste drückt")
-    public void der_benutzer_im_suchfeld_den_begriff_eingibt_und_die_enter_taste_drückt(String auftragsName) {
-        allPages.getOffeneStellen().jobSuche(auftragsName);
-    }
-
-    @Given("Der Benutzer im Filter Standort den Wert Frankfurt am Main auswählt")
-    public void der_benutzer_im_filter_standort_den_wert_frankfurt_am_main_auswählt() {
-        allPages.getOffeneStellen().waehleStandort();
-    }
-
-    @Given("Der Benutzer im Filter Vertragsart den Wert full-time auswählt")
-    public void der_benutzer_im_filter_vertragsart_den_wert_full_time_auswählt() {
-        allPages.getOffeneStellen().waehleVertragsart();
-
-    }
-    @Given("Klickt der Benutzer auf den ersten gefundenen Jobtitel, der {string} enthält")
-    public void klickt_der_benutzer_auf_den_ersten_gefundenen_jobtitel_der_enthält(String wort) {
-        allPages.getOffeneStellen().waehleJob(wort);
-    }
-    @Given("Der Benutzer klickt jetzt bewerben")
-    public void der_benutzer_klickt_jetzt_bewerben() {
-        allPages.getOffeneStellen().klickJetztBewerben();
-
-    }
-    @Given("Füllt den Formular aus")
-    public void füllt_den_formular_aus() {
-        allPages.getBewerbungsFomular().formullarAusfüllen();
+    @Then("Prüft, ob der Absenden-Button klickbar ist")
+    public void prüft_ob_der_absenden_button_klickbar_ist() {
 
     }
-    @Given("Klickt absenden")
-    public void klickt_absenden() {
 
-
-    }
 
 }

@@ -169,6 +169,11 @@ public class JavascriptUtils {
         }
     }
 
+    // A function that scrolls to the top of the page.
+    public static void scrollToTop(WebDriver driver) {
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0)");
+    }
+
 }
 
 

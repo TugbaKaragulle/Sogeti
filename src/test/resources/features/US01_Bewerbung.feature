@@ -1,18 +1,21 @@
-@homePage
-Feature: Homepage
+  @homePage
+  Feature: Bewerbung über die Homepage von Sogeti
 
-  Scenario: zur Startseite
-    * Der Benutzer geht zur Startseite
-    * Der Benutzer mit der Maus über den Menüpunkt "Karriere" fährt
-    * Auf den Link "Offene Stellen" klickt
-    * Der Benutzer langsam bis zum Ende aller Stellenanzeigen scrollt
-    * Der Benutzer im Suchfeld den Begriff "Test" eingibt und die Enter-Taste drückt
-    * Der Benutzer im Filter Standort den Wert Frankfurt am Main auswählt
-    * Der Benutzer im Filter Vertragsart den Wert full-time auswählt
-    * Klickt der Benutzer auf den ersten gefundenen Jobtitel, der 'Test' enthält
-    * Der Benutzer klickt jetzt bewerben
-    * Füllt den Formular aus
-    * Klickt absenden
+  Background: Benutzer öffnet die Startseite
+    Given Der Benutzer geht zur Startseite
+    And Entfernt das Cookies-Banner
+
+  Scenario: Job suchen und Bewerbung starten
+    When Der Benutzer fährt mit der Maus über den Menüpunkt "Karriere"
+    And Klickt auf den Link "Offene Stellen"
+    And Scrollt langsam bis zum Ende der Stellenanzeigen
+    And Gibt im Suchfeld den Begriff "Test" ein und drückt Enter
+    And Wählt im Filter Standort "Frankfurt am Main" aus
+    And Wählt im Filter Vertragsart "Full-time" aus
+    And Klickt auf den ersten Jobtitel, der "Test" enthält
+    And Klickt auf Jetzt bewerben
+    And Füllt das Bewerbungsformular aus
+    Then Prüft, ob der Absenden-Button klickbar ist
 
 
 
