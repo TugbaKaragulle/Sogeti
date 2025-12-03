@@ -7,7 +7,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class BewerbungsFomular {
@@ -87,8 +86,7 @@ public class BewerbungsFomular {
     private void uploadCV() {
         try {
             String absolutePath = "C:/Users/Tugba/IdeaProjects/Sogeti/Test Sogeti.docx";
-            WebElement cvInput = driver.findElement(lebenslauf);
-            cvInput.sendKeys(absolutePath);
+            ReusableMethods.sendKeys(lebenslauf,absolutePath);
             ReusableMethods.waitForSeconds(4);
             log.info("Lebenslauf hochgeladen.");
         } catch (Exception e) {
@@ -109,7 +107,27 @@ public class BewerbungsFomular {
         log.info("Datenschutz akzeptiert.");
     }
 
-    // Formular absenden
+    public boolean isAbsendenButtonClickable() {
+        try {
+            log.info("Überprüfe, ob der Absenden Button anklickbar ist");
+
+            ReusableMethods.waitForElementToBeClickable(driver, absenden, 10);
+            boolean isClickable = driver.findElement(absenden).isEnabled();
+
+            if (isClickable) {
+                log.info("Der Absenden Button ist anklickbar");
+            } else {
+                log.warn("Der Absenden Button ist nicht anklickbar");
+            }
+            return isClickable;
+
+        } catch (Exception e) {
+            log.error("Fehler beim Überprüfen des Absenden Buttons: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    // Formular absenden (werde nicht genutzt!)
     public void submitForm() {
         try {
             //ReusableMethods.clickElement(absenden);
@@ -119,4 +137,5 @@ public class BewerbungsFomular {
             throw e;
         }
     }
+
 }

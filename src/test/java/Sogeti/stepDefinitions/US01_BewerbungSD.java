@@ -2,6 +2,7 @@ package Sogeti.stepDefinitions;
 
 import Sogeti.pages.AllPages;
 import io.cucumber.java.en.*;
+import org.testng.Assert;
 
 public class US01_BewerbungSD {
 
@@ -46,6 +47,7 @@ public class US01_BewerbungSD {
 
     @Then("Prüft, ob der Absenden-Button klickbar ist")
     public void prüft_ob_der_absenden_button_klickbar_ist() {
+        Assert.assertTrue(allPages.getBewerbungsFomular().isAbsendenButtonClickable());
 
     }
 
