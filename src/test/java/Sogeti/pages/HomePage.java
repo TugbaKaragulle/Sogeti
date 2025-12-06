@@ -73,6 +73,8 @@ public class HomePage {
     }
 
     public void denemeJenkinsKarriere(){
-        ReusableMethods.clickElementByJS(karriere);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(karriere));
+       // ReusableMethods.clickElementByJS(karriere);
     }
 }
