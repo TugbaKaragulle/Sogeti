@@ -32,7 +32,6 @@ public class Driver {
                     break;
                 case "chrome":
                     driverThread.set(new ChromeDriver());
-
                     break;
                 case "firefox":
                     driverThread.set(new FirefoxDriver());
