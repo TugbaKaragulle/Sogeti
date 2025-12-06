@@ -11,7 +11,6 @@ import java.time.Duration;
 
 import static Sogeti.utilities.Driver.getDriver;
 
-
 public class JavascriptUtils {
 
 
@@ -183,8 +182,6 @@ public class JavascriptUtils {
                         "arguments[0].dispatchEvent(evObj);";
         js.executeScript(mouseOverScript, element);
     }
-
-
 }
 
 
