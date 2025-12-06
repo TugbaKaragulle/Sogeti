@@ -11,7 +11,7 @@ public class Hooks {
     public void tearDown(Scenario scenario){
         if (scenario.isFailed()){
             // Capture a screenshot of the failed scenario
-            byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+            byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES); //Cucumber raporuna ekran resmi ekler.
             // Attach the screenshot to the report
             scenario.attach(screenshot, "image/png", "Screenshot of failed scenario"+scenario.getName());
         }

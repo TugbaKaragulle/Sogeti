@@ -37,6 +37,13 @@
             <version>7.27.2</version>
         </dependency>
 
+        <!-- Extent Reports -->
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber7-adapter</artifactId>
+            <version>1.14.0</version>
+        </dependency>
+
         <!--  Log4j2 Core  -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
