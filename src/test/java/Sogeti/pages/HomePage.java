@@ -71,4 +71,8 @@ public class HomePage {
             default -> throw new NoSuchElementException("Fehler!: Ungültige Menübezeichnung: " + headerName);
         };
     }
+
+    public void denemeJenkinsKarriere(){
+        ReusableMethods.clickElementByJS(karriere);
+    }
 }
