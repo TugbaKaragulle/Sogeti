@@ -75,6 +75,7 @@ public class HomePage {
     public void denemeJenkinsKarriere(){
         Actions actions = new Actions(driver);
         actions.moveToElement(driver.findElement(karriere));
+        actions.perform();
        // ReusableMethods.clickElementByJS(karriere);
     }
 }

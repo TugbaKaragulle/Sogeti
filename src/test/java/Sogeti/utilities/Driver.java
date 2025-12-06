@@ -32,12 +32,7 @@ public class Driver {
                     break;
                 case "chrome":
                     driverThread.set(new ChromeDriver());
-                    ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.addArguments("--window-size=1920,1080");
-                    chromeOptions.addArguments("--disable-gpu");
-                    chromeOptions.addArguments("--start-maximized");
-                    chromeOptions.addArguments("--headless=new");  // Eğer sadece Jenkins’te headless çalışıyorsan
-                    driverThread.set(new ChromeDriver(chromeOptions));
+
                     break;
                 case "firefox":
                     driverThread.set(new FirefoxDriver());
