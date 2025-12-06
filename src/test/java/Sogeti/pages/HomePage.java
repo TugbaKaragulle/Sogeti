@@ -1,6 +1,7 @@
 package Sogeti.pages;
 
 import Sogeti.utilities.Driver;
+import Sogeti.utilities.JavascriptUtils;
 import Sogeti.utilities.ReusableMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -53,16 +54,6 @@ public class HomePage {
         return displayed;
     }
 
-//    // Bewegt die Maus zu einem Header-Element.
-//    public void hoverOverHeader(String headerName) {
-//        By locator = getHeaderLocator(headerName);
-//        WebElement element = driver.findElement(locator);
-//        new Actions(driver).moveToElement(element).perform();
-//        log.info("Maus über '{}' bewegt.", headerName);
-//        ReusableMethods.waitForSeconds(4);
-//    }
-
-
     public void hoverOverHeader(String headerName) {
         By locator = getHeaderLocator(headerName);
         WebElement element = ReusableMethods.visibilityOfElement(locator);
@@ -77,16 +68,8 @@ public class HomePage {
             log.warn("Normaler Hover fehlgeschlagen – JS-MouseOver wird verwendet: {}", headerName);
 
             // 2) Headless fallback: JS mouseover event
-            String mouseOverScript =
-                    "var evObj = document.createEvent('MouseEvents');" +
-                            "evObj.initMouseEvent('mouseover', true, true, window, 1, 0,0,0,0, false,false,false,false,0,null);" +
-                            "arguments[0].dispatchEvent(evObj);";
-
-            ((JavascriptExecutor) driver).executeScript(mouseOverScript, element);
+            JavascriptUtils.mouseOverByJS(element);
         }
-
-        // 3) Menü açılması için küçük bekleme
-        ReusableMethods.waitForSeconds(1);
     }
 
     // Hilfsmethode: Header-Name -> Locator

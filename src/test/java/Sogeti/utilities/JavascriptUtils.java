@@ -174,6 +174,17 @@ public class JavascriptUtils {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0)");
     }
 
+    // Kann als sicherer Fallback verwendet werden, wenn Actions.moveToElement() im Headless-Modus oder bei Hover-Problemen nicht funktioniert.
+    public static void mouseOverByJS(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        String mouseOverScript =
+                "var evObj = document.createEvent('MouseEvents');" +
+                        "evObj.initMouseEvent('mouseover', true, true, window, 1, 0,0,0,0, false,false,false,false,0,null);" +
+                        "arguments[0].dispatchEvent(evObj);";
+        js.executeScript(mouseOverScript, element);
+    }
+
+
 }
 
 
