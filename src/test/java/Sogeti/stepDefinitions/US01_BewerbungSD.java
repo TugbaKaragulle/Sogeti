@@ -10,8 +10,8 @@ public class US01_BewerbungSD {
 
     @When("Der Benutzer fährt mit der Maus über den Menüpunkt {string}")
     public void der_benutzer_fährt_mit_der_maus_über_den_menüpunkt(String menu) {
-       // allPages.getHomePage().hoverOverHeader(menu); // HomePage'deki yeni method
-        allPages.getHomePage().denemeJenkinsKarriere();
+        allPages.getHomePage().hoverOverHeader(menu); // HomePage'deki yeni method
+
     }
     @And("Klickt auf den Link {string}")
     public void klickt_auf_den_link(String menuName) {

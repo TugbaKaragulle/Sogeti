@@ -8,6 +8,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
+import java.time.Duration;
+
 public class HomePage {
 
     private WebDriver driver = Driver.getDriver();
@@ -51,13 +53,40 @@ public class HomePage {
         return displayed;
     }
 
-    // Bewegt die Maus zu einem Header-Element.
+//    // Bewegt die Maus zu einem Header-Element.
+//    public void hoverOverHeader(String headerName) {
+//        By locator = getHeaderLocator(headerName);
+//        WebElement element = driver.findElement(locator);
+//        new Actions(driver).moveToElement(element).perform();
+//        log.info("Maus über '{}' bewegt.", headerName);
+//        ReusableMethods.waitForSeconds(4);
+//    }
+
+
     public void hoverOverHeader(String headerName) {
         By locator = getHeaderLocator(headerName);
-        WebElement element = driver.findElement(locator);
-        new Actions(driver).moveToElement(element).perform();
-        log.info("Maus über '{}' bewegt.", headerName);
-        ReusableMethods.waitForSeconds(4);
+        WebElement element = ReusableMethods.visibilityOfElement(locator);
+
+        try {
+            // 1) Normal hover
+            Actions actions = new Actions(driver);
+            actions.moveToElement(element).pause(Duration.ofMillis(300)).perform();
+            log.info("Hover durchgeführt für '{}'.", headerName);
+
+        } catch (Exception e) {
+            log.warn("Normaler Hover fehlgeschlagen – JS-MouseOver wird verwendet: {}", headerName);
+
+            // 2) Headless fallback: JS mouseover event
+            String mouseOverScript =
+                    "var evObj = document.createEvent('MouseEvents');" +
+                            "evObj.initMouseEvent('mouseover', true, true, window, 1, 0,0,0,0, false,false,false,false,0,null);" +
+                            "arguments[0].dispatchEvent(evObj);";
+
+            ((JavascriptExecutor) driver).executeScript(mouseOverScript, element);
+        }
+
+        // 3) Menü açılması için küçük bekleme
+        ReusableMethods.waitForSeconds(1);
     }
 
     // Hilfsmethode: Header-Name -> Locator
@@ -72,10 +101,4 @@ public class HomePage {
         };
     }
 
-    public void denemeJenkinsKarriere(){
-        Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(karriere));
-        actions.perform();
-       // ReusableMethods.clickElementByJS(karriere);
-    }
 }
