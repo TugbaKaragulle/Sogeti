@@ -21,7 +21,9 @@ public class HomePage {
     private By services = By.xpath("//a[@aria-label='Services Menü']/span/span");
     private By academy = By.xpath("//a[@aria-label='Academy Menü']/span/span");
     private By einblicke = By.xpath("//a[@aria-label='Einblicke Menü']/span/span");
-    private By karriere = By.xpath("//div[1]/div[1]/div[1]/nav[1]/ul[1]/li[4]/a[1]/span[1]/span[1]");
+    //private By karriere = By.xpath("//div[1]/div[1]/div[1]/nav[1]/ul[1]/li[4]/a[1]/span[1]/span[1]");
+    //private By karriere = By.xpath("//a[text()='Karriere']");
+    private By karriere = By.xpath("//a[@aria-label='Karriere Menü']");
     private By uberUns = By.xpath("//a[@aria-label='Über uns Menü']/span/span");
     private By shadowhost = By.cssSelector("aside#usercentrics-cmp-ui");
     private By cookiesDenyButton = By.cssSelector("button.deny.uc-deny-button");
