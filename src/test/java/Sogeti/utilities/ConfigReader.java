@@ -6,27 +6,27 @@ import java.util.Properties;
 
 public class ConfigReader {
 
-    private static Properties properties; // Yapılandırma verilerini saklamak için Properties nesnesi oluşturuluyor.
+    private static Properties properties;
 
     static {
-        String filePath = "configuration.properties"; // Yapılandırma dosyasının yolu belirleniyor.
+        String filePath = "configuration.properties";
         try {
-            FileInputStream fis = new FileInputStream(filePath); // Dosya okuma işlemi için FileInputStream oluşturuluyor.
-            properties = new Properties(); // Yapılandırma verilerini saklamak için yeni bir Properties nesnesi oluşturuluyor.
-            properties.load(fis); // FileInputStream ile okunan veriler Properties nesnesine yükleniyor.
-            fis.close(); // Dosya kapatılıyor.
+            FileInputStream fis = new FileInputStream(filePath);
+            properties = new Properties();
+            properties.load(fis);
+            fis.close();
         } catch (IOException e) {
-            e.printStackTrace(); // Hata durumunda exception yakalanıp konsola yazdırılıyor.
+            e.printStackTrace();
         }
     }
 
     public static String getProperty(String key) {
-        // Belirtilen anahtar (key) ile ilişkili değeri döndüren getProperty metodu oluşturuluyor.
+
         return properties.getProperty(key);
     }
 
     public static void setProperty(String key, String value){
-        properties.setProperty(key, value);//Çalışma esnasında geçici olarak properti değeri atar.
+        properties.setProperty(key, value);
     }
 
 }

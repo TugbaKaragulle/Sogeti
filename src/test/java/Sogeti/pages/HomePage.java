@@ -65,7 +65,7 @@ public class HomePage {
             log.warn("Normaler Hover fehlgeschlagen – JS-MouseOver wird verwendet: {}", headerName);
 
             // 2) Headless fallback: JS mouseover event
-            JavascriptUtils.mouseOverByJS(element);
+            JavascriptUtils.mouseOverByJS(locator);
         }
     }
 

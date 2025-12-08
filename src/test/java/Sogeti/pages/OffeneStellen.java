@@ -116,7 +116,7 @@ public class OffeneStellen {
             ReusableMethods.waitForSeconds(2);
             JavascriptUtils.seiteLangsamNachUntenScrollen(driver, 5);
             ReusableMethods.waitForSeconds(2);
-            JavascriptUtils.scrollToVisibleElement(driver, driver.findElement(suchFeld));
+            JavascriptUtils.scrollToVisibleElement(driver, suchFeld);
             ReusableMethods.waitForSeconds(4);
             log.info("Seite gescrollt und 'Mehr laden' geklickt");
         } catch (Exception e) {

@@ -77,7 +77,7 @@ public class BewerbungsFomular {
     }
 
     private void enterPhoneNumber() {
-        ReusableMethods.sendKeys(telefonNummer, faker.phoneNumber().phoneNumber());
+        ReusableMethods.sendKeys(telefonNummer, faker.phoneNumber().cellPhone());
         ReusableMethods.waitForSeconds(4);
         log.info("Telefonnummer eingegeben");
     }

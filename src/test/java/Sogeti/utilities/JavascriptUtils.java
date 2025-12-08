@@ -1,9 +1,6 @@
 package Sogeti.utilities;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,62 +11,14 @@ import static Sogeti.utilities.Driver.getDriver;
 public class JavascriptUtils {
 
 
-    public static void clickElementByJS(WebElement element) {
+    public static void clickElementByJS(By by) {
+        WebElement element = getDriver().findElement(by);
         JavascriptExecutor jsexecutor = ((JavascriptExecutor) getDriver());
         jsexecutor.executeScript("arguments[0].click();", element);
     }
 
-    public static void safeClickWithJS(WebElement element) {
-        JavascriptExecutor jsexecutor = (JavascriptExecutor) getDriver();
-        try {
-            // Scroll ile ortalanır
-            jsexecutor.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
-
-            // Tıklama
-            jsexecutor.executeScript("arguments[0].click();", element);
-
-            // Loglama için güvenli getText
-            String elementText = "";
-            try {
-                elementText = element.getText();
-            } catch (StaleElementReferenceException e) {
-                elementText = "[Element Text Unavailable - Stale]";
-            }
-
-
-        } catch (Exception e) {
-
-        }
-    }
-
-    // JavaScript kullanarak sayfa başlığını alır.
-    public static String getTitleByJS() {
-        JavascriptExecutor jsexecutor = ((JavascriptExecutor) getDriver());
-        String title = jsexecutor.executeScript("return document.title;").toString();
-        return title;
-    }
-
-    // Sayfayı en alta doğru kaydırır.
-    public static void scrollDownByJS() {
-        JavascriptExecutor jsexecutor = ((JavascriptExecutor) getDriver());
-        jsexecutor.executeScript("window.scrollTo(0,document.body.scrollHeight)");
-    }
-
-    // Sayfayı en üste doğru kaydırır.
-    public static void scrollAllUpByJS() {
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
-    }
-
-    // Belirtilen WebElement'e JavaScript kullanarak odaklanır, yani görünür hale getirir.
-    public static void scrollIntoViewJS(WebElement element) {
-        JavascriptExecutor jsexecutor = (JavascriptExecutor) getDriver();
-        jsexecutor.executeScript("arguments[0].scrollIntoView();", element);
-
-    }
-
-    // Belirtilen WebElement'in arkaplan rengini değiştirir ve ardından eski rengine geri döner, bir tür "flash" efekti oluşturur.
-    public static void changeBackgroundColorByJS(WebElement element, String color) {
+    public static void changeBackgroundColorByJS(By by, String color) {
+        WebElement element = getDriver().findElement(by);
         JavascriptExecutor javascriptExecutor = ((JavascriptExecutor) getDriver());
         javascriptExecutor.executeScript("arguments[0].style.backgroundColor = '" + color + "'", element);
         try {
@@ -79,66 +28,8 @@ public class JavascriptUtils {
         }
     }
 
-    // Belirtilen WebElement'in arkaplan rengini hızlı bir şekilde değiştirir, bir tür "flash" efekti oluşturur.
-    public static void flash(WebElement element, String color) {
-        String bgColor = element.getCssValue("backgroundcolor");
-        for (int i = 0; i < 5; i++) {
-            changeBackgroundColorByJS(element, color);
-            changeBackgroundColorByJS(element, bgColor);
-        }
-    }
-
-    // Belirtilen mesaj ile bir JavaScript uyarısı oluşturur.
-    public static void generateAlert(String message) {
-        JavascriptExecutor javascriptExecutor = ((JavascriptExecutor) getDriver());
-        javascriptExecutor.executeScript("alert('" + message + "')");
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    // Belirtilen JavaScript komutunu belirtilen WebElement üzerinde çalıştırır.
-    public static void executeJScommand(WebElement element, String command) {
-        JavascriptExecutor jse = (JavascriptExecutor) getDriver();
-        jse.executeScript(command, element);
-    }
-
-    // Belirtilen JavaScript komutunu çalıştırır.
-    public static void executeJScommand(String command) {
-        JavascriptExecutor jse = (JavascriptExecutor) getDriver();
-        jse.executeScript(command);
-    }
-
-    // Belirtilen WebElement'in değerini JavaScript kullanarak ayarlar.
-    public static void setValueByJS(WebElement element, String text) {
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("arguments[0].setAttribute('value','" + text + "')", element);
-    }
-
-    // Belirtilen elementin değerini JavaScript kullanarak alır ve ekrana yazdırır.
-    public static void getValueByJS(String idOfElement) {
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        String value = js.executeScript("return document.getElementById('" + idOfElement + "').value").toString();
-        System.out.println(value);
-    }
-
-    // Belirtilen WebElement'e belirtilen kenarlık stiliyle bir kenarlık ekler.
-    public static void addBorderWithJS(WebElement element, String borderStyle) {
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("arguments[0].style.border='" + borderStyle + "'", element);
-    }
-
-    // Belirtilen WebElement'in değerini JavaScript kullanarak alır.
-    public static Object getElementValueJS(WebElement element) {
-        return ((JavascriptExecutor) getDriver()).executeScript("return arguments[0].value", element);
-
-    }
-
-    // A function that scrolls the page up to the specified element.
-    public static void scrollToVisibleElement(WebDriver driver, WebElement element) {
-        // Wait until the element is visible
+    public static void scrollToVisibleElement(WebDriver driver, By by) {
+        WebElement element = getDriver().findElement(by);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(element));
 
@@ -151,7 +42,6 @@ public class JavascriptUtils {
     public static void seiteLangsamNachUntenScrollen(WebDriver driver, int schritte) {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
-
         try {
             for (int i = 0; i < schritte; i++) {
                 // Her adımda 100 piksel aşağı kaydır
@@ -167,13 +57,10 @@ public class JavascriptUtils {
         }
     }
 
-    // A function that scrolls to the top of the page.
-    public static void scrollToTop(WebDriver driver) {
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0)");
-    }
 
     // Kann als sicherer Fallback verwendet werden, wenn Actions.moveToElement() im Headless-Modus oder bei Hover-Problemen nicht funktioniert.
-    public static void mouseOverByJS(WebElement element) {
+    public static void mouseOverByJS(By by) {
+        WebElement element = getDriver().findElement(by);
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         String mouseOverScript =
                 "var evObj = document.createEvent('MouseEvents');" +

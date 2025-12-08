@@ -1,4 +1,4 @@
-  @homePage
+  @Bewerbung @Regression @Smoke
   Feature: Bewerbung über die Homepage von Sogeti
 
   Background: Benutzer öffnet die Startseite
