@@ -26,7 +26,8 @@ public class Karriere {
     private By diversitaetUndInklusion = By.xpath("//a[@aria-label='Diversität und Inklusion']");
     private By bewerbungstippsFAQ = By.xpath("//a[@aria-label='Bewerbungstipps & FAQ']");
 
-//   Bewegt zu einem Karriere-Header und klickt darauf.
+    // Methods
+
     public void clickCareerMenu(String menuName) {
         By locator = getMenuLocator(menuName);
         try {
@@ -40,7 +41,6 @@ public class Karriere {
         }
     }
 
-    //Menü-Name -> Locator
     private By getMenuLocator(String menuName) {
         return switch (menuName) {
             case "Offene Stellen" -> offeneStellen;

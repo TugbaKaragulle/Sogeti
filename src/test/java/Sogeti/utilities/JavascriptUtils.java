@@ -14,7 +14,6 @@ import static Sogeti.utilities.Driver.getDriver;
 public class JavascriptUtils {
 
 
-    // Belirtilen WebElement'i JavaScript kullanarak tıklar.
     public static void clickElementByJS(WebElement element) {
         JavascriptExecutor jsexecutor = ((JavascriptExecutor) getDriver());
         jsexecutor.executeScript("arguments[0].click();", element);

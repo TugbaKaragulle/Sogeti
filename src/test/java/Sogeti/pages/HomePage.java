@@ -29,8 +29,8 @@ public class HomePage {
     private By shadowhost = By.cssSelector("aside#usercentrics-cmp-ui");
     private By cookiesDenyButton = By.cssSelector("button.deny.uc-deny-button");
 
+    //Methods
 
-    // Cookies Entfernung
     public void removeCookies() {
         ReusableMethods.waitForSeconds(4);
         try {
@@ -44,7 +44,6 @@ public class HomePage {
         }
     }
 
-    // Prüft, ob ein Header sichtbar ist.
     public boolean isHeaderDisplayed(String headerName) {
         By locator = getHeaderLocator(headerName);
         boolean displayed = ReusableMethods.isDisplayed(locator);
@@ -70,7 +69,6 @@ public class HomePage {
         }
     }
 
-    // Hilfsmethode: Header-Name -> Locator
     private By getHeaderLocator(String headerName) {
         return switch (headerName) {
             case "Services" -> services;

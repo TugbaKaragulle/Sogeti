@@ -14,7 +14,6 @@ import static Sogeti.utilities.Driver.getDriver;
 
 public class ReusableMethods {
 
-    // CLICK METHODS------------------------------------------------------------------------------------------------------
     public static void clickElement(By by) {
         getDriver().findElement(by).click();
     }
@@ -28,12 +27,10 @@ public class ReusableMethods {
         JavascriptUtils.clickElementByJS(getDriver().findElement(by));
     }
 
-    // SENDKEYS METHODS------------------------------------------------------------------------------------------------------
     public static void sendKeys(By by, String data) {
         getDriver().findElement(by).sendKeys(data);
     }
 
-    // ISDISPLAYED / ISVISIBLE  METHODS------------------------------------------------------------------------------------------------------
     public static boolean isDisplayed(By by) {
         return getDriver().findElement(by).isDisplayed();
     }
@@ -53,17 +50,14 @@ public class ReusableMethods {
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
     }
 
-    //ISENABLED METHODS------------------------------------------------------------------------------------------------------
     public static boolean isEnabled(By by) {
         return getDriver().findElement(by).isEnabled();
     }
 
-    //ISSELECTED METHODS------------------------------------------------------------------------------------------------------
     public static boolean isSelected(By by) {
         return getDriver().findElement(by).isSelected();
     }
 
-    //ISCLICKABLE METHODS------------------------------------------------------------------------------------------------------
     public static boolean isClickableByWebDriverWait(By by) {
         try {
             clickElementByWebDriverWait(by);
@@ -72,7 +66,6 @@ public class ReusableMethods {
             return false;
         }
     }
-//URL CONTAINS METHOD       * Waits for the current URL to contain the given string.
 
     public static boolean urlContainsByWebDriverWait(String data) {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
@@ -83,7 +76,6 @@ public class ReusableMethods {
         }
     }
 
-    //GET TEXT OF ELEMENT     * Returns trimmed text of a WebElement.
     public static String getTextOfElement(By by) {
         return getDriver().findElement(by).getText().trim();
     }
@@ -93,7 +85,6 @@ public class ReusableMethods {
         return (String) js.executeScript("return arguments[0].innerText;", getDriver().findElement(by));
     }
 
-    //CONVERT ELEMENT TEXT INTO INTEGER    * Extracts and returns an integer from a WebElement's text.  * (e.g. "$1,234" → 1234)
     public static int convertElementTextIntoInteger(WebElement element) {
         String text = element.getText().replaceAll("[^0-9]", "");
         if (text.isEmpty()) {
@@ -102,7 +93,6 @@ public class ReusableMethods {
         return Integer.parseInt(text);
     }
 
-    //THREAD.SLEEP METHOD
     public static void waitForSeconds(int seconds) {
         try {
             Thread.sleep(seconds * 1000L);
@@ -112,7 +102,6 @@ public class ReusableMethods {
         }
     }
 
-    //FLUENT WAIT
     public static List<WebElement> waitForVisibilityofElementsByFleuntWait(By by){
         Wait<WebDriver> wait = new FluentWait<>(getDriver())
                 .withTimeout(Duration.ofSeconds(20))
@@ -122,15 +111,11 @@ public class ReusableMethods {
         return wait.until(driver -> driver.findElements(by));
     }
 
-    //REFRESH PAGE METHOD
     public static void refreshCurrentPage(){
         getDriver().navigate().refresh();
     }
 
 
-    /**
-     * Waits for the page title to contain the given string.
-     */
     public static boolean waitForVisibilityOfTitle(String string) {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         return wait.until(ExpectedConditions.titleContains(string));

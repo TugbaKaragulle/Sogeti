@@ -49,7 +49,6 @@ public class BewerbungsFomular {
         }
     }
 
-    //Cookies Entfernung
     private void acceptCookies() {
         try {
             ReusableMethods.clickElement(cookies);
@@ -127,7 +126,7 @@ public class BewerbungsFomular {
         }
     }
 
-    // Formular absenden (werde nicht genutzt!)
+    // Formular absenden (wird nicht genutzt!)
     public void submitForm() {
         try {
             //ReusableMethods.clickElement(absenden);

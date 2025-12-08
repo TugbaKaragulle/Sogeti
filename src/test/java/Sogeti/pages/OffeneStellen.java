@@ -29,7 +29,8 @@ public class OffeneStellen {
     private By gefundeneJobs = By.xpath("//a[@class='table-tr filter-box tag-active joblink']");
     private By job = By.xpath("//a[@class='cta-link']");
 
-    // Job Arama / Filter
+    //Methods
+
     public void searchJob(String jobName) {
         try {
             ReusableMethods.waitForElementToBeClickable(driver, suchFeld, 10);
@@ -72,7 +73,6 @@ public class OffeneStellen {
         }
     }
 
-    // Job Auswahl
     public void selectJob(String keyword) {
         boolean gefunden = false;
         try {
@@ -107,7 +107,6 @@ public class OffeneStellen {
         }
     }
 
-    // Scroll and Mehr laden
     public void scrollAndLoadMore() {
         try {
             JavascriptUtils.seiteLangsamNachUntenScrollen(driver, 20);
