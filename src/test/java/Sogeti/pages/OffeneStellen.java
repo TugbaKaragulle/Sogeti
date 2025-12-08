@@ -38,9 +38,9 @@ public class OffeneStellen {
             ReusableMethods.waitForSeconds(4);
             ReusableMethods.clickElement(searchButton);
             ReusableMethods.waitForSeconds(4);
-            log.info("Job-Suche mit Begriff '{}' durchgeführt.", jobName);
+            log.info("Job-Suche mit Begriff '{}' durchgeführt", jobName);
         } catch (Exception e) {
-            log.error("Fehler bei Job-Suche mit '{}'.", jobName, e);
+            log.error("Fehler bei Job-Suche mit '{}' ", jobName, e);
             throw e;
         }
     }
@@ -52,9 +52,9 @@ public class OffeneStellen {
             ReusableMethods.waitForElementToBeClickable(driver, frankfurt, 10);
             ReusableMethods.clickElementByJS(frankfurt);
             ReusableMethods.waitForSeconds(4);
-            log.info("Standort 'Frankfurt' ausgewählt.");
+            log.info("Standort 'Frankfurt' ausgewählt");
         } catch (Exception e) {
-            log.error("Fehler beim Auswählen des Standorts.", e);
+            log.error("Fehler beim Auswählen des Standorts", e);
             throw e;
         }
     }
@@ -66,9 +66,9 @@ public class OffeneStellen {
             ReusableMethods.waitForElementToBeClickable(driver, fullTime, 10);
             ReusableMethods.clickElementByJS(fullTime);
             ReusableMethods.waitForSeconds(4);
-            log.info("Vertragsart 'Full-time' ausgewählt.");
+            log.info("Vertragsart 'Full-time' ausgewählt");
         } catch (Exception e) {
-            log.error("Fehler beim Auswählen der Vertragsart.", e);
+            log.error("Fehler beim Auswählen der Vertragsart", e);
             throw e;
         }
     }
@@ -83,16 +83,16 @@ public class OffeneStellen {
                 if (element.getText().contains(keyword)) {
                     element.click();
                     gefunden = true;
-                    log.info("Job mit Begriff '{}' ausgewählt.", keyword);
+                    log.info("Job mit Begriff '{}' ausgewählt", keyword);
                     return;
                 }
             }
             if (!gefunden) {
-                throw new NoSuchElementException("Kein Jobtitel mit dem Begriff '" + keyword + "' gefunden.");
+                throw new NoSuchElementException("Kein Jobtitel mit dem Begriff '" + keyword + "' gefunden");
             }
         } catch (TimeoutException e) {
-            log.error("Die Jobliste konnte innerhalb der Wartezeit nicht geladen werden.", e);
-            throw new NoSuchElementException("Jobliste konnte nicht geladen werden.");
+            log.error("Die Jobliste konnte innerhalb der Wartezeit nicht geladen werden", e);
+            throw new NoSuchElementException("Jobliste konnte nicht geladen werden");
         }
     }
 
@@ -102,7 +102,7 @@ public class OffeneStellen {
             ReusableMethods.waitForSeconds(2);
             log.info("Auf 'Jetzt bewerben' geklickt.");
         } catch (Exception e) {
-            log.error("Fehler beim Klick auf 'Jetzt bewerben'.", e);
+            log.error("Fehler beim Klick auf 'Jetzt bewerben'", e);
             throw e;
         }
     }
@@ -118,9 +118,9 @@ public class OffeneStellen {
             ReusableMethods.waitForSeconds(2);
             JavascriptUtils.scrollToVisibleElement(driver, driver.findElement(suchFeld));
             ReusableMethods.waitForSeconds(4);
-            log.info("Seite gescrollt und 'Mehr laden' geklickt.");
+            log.info("Seite gescrollt und 'Mehr laden' geklickt");
         } catch (Exception e) {
-            log.error("Fehler beim Scrollen und Laden weiterer Jobs.", e);
+            log.error("Fehler beim Scrollen und Laden weiterer Jobs", e);
             throw e;
         }
     }

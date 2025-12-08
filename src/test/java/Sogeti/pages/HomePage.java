@@ -38,9 +38,9 @@ public class HomePage {
             SearchContext shadowRoot = shadow.getShadowRoot();
             WebElement denyButton = shadowRoot.findElement(cookiesDenyButton);
             denyButton.click();
-            log.info("Cookies-Banner erfolgreich abgelehnt.");
+            log.info("Cookies-Banner erfolgreich abgelehnt");
         } catch (NoSuchElementException e) {
-            log.warn("Cookies-Banner nicht gefunden, überspringe Schritt.");
+            log.warn("Cookies-Banner nicht gefunden, überspringe Schritt");
         }
     }
 
@@ -59,7 +59,7 @@ public class HomePage {
             // 1) Normal hover
             Actions actions = new Actions(driver);
             actions.moveToElement(element).pause(Duration.ofMillis(300)).perform();
-            log.info("Hover durchgeführt für '{}'.", headerName);
+            log.info("Hover durchgeführt für '{}' ", headerName);
 
         } catch (Exception e) {
             log.warn("Normaler Hover fehlgeschlagen – JS-MouseOver wird verwendet: {}", headerName);

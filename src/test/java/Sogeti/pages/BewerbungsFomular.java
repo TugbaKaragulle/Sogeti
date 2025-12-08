@@ -42,9 +42,9 @@ public class BewerbungsFomular {
             selectLocation();
             acceptTerms();
             ReusableMethods.waitForSeconds(4);
-            log.info("Formular erfolgreich ausgefüllt.");
+            log.info("Formular erfolgreich ausgefüllt");
         } catch (Exception e) {
-            log.error("Fehler beim Ausfüllen des Formulars.", e);
+            log.error("Fehler beim Ausfüllen des Formulars", e);
             throw e;
         }
     }
@@ -52,34 +52,34 @@ public class BewerbungsFomular {
     private void acceptCookies() {
         try {
             ReusableMethods.clickElement(cookies);
-            log.info("Cookies akzeptiert.");
+            log.info("Cookies akzeptiert");
         } catch (Exception e) {
-            log.warn("Cookies-Banner nicht gefunden, überspringe Schritt.");
+            log.warn("Cookies-Banner nicht gefunden, überspringe Schritt");
         }
     }
 
     private void enterFirstName() {
         ReusableMethods.sendKeys(vorname, faker.name().firstName());
         ReusableMethods.waitForSeconds(4);
-        log.info("Vorname eingegeben.");
+        log.info("Vorname eingegeben");
     }
 
     private void enterLastName() {
         ReusableMethods.sendKeys(nachname, faker.name().lastName());
         ReusableMethods.waitForSeconds(4);
-        log.info("Nachname eingegeben.");
+        log.info("Nachname eingegeben");
     }
 
     private void enterEmail() {
         ReusableMethods.sendKeys(email, faker.internet().emailAddress());
         ReusableMethods.waitForSeconds(4);
-        log.info("Email eingegeben.");
+        log.info("Email eingegeben");
     }
 
     private void enterPhoneNumber() {
         ReusableMethods.sendKeys(telefonNummer, faker.phoneNumber().phoneNumber());
         ReusableMethods.waitForSeconds(4);
-        log.info("Telefonnummer eingegeben.");
+        log.info("Telefonnummer eingegeben");
     }
 
     private void uploadCV() {
@@ -87,9 +87,9 @@ public class BewerbungsFomular {
             String absolutePath = "C:/Users/Tugba/IdeaProjects/Sogeti/Test Sogeti.docx";
             ReusableMethods.sendKeys(lebenslauf,absolutePath);
             ReusableMethods.waitForSeconds(4);
-            log.info("Lebenslauf hochgeladen.");
+            log.info("Lebenslauf hochgeladen");
         } catch (Exception e) {
-            log.error("Fehler beim Hochladen des Lebenslaufs.", e);
+            log.error("Fehler beim Hochladen des Lebenslaufs", e);
             throw e;
         }
     }
@@ -97,13 +97,13 @@ public class BewerbungsFomular {
     private void selectLocation() {
         ReusableMethods.clickElement(standortFrankfurt);
         ReusableMethods.waitForSeconds(4);
-        log.info("Standort 'Frankfurt' ausgewählt.");
+        log.info("Standort 'Frankfurt' ausgewählt");
     }
 
     private void acceptTerms() {
         ReusableMethods.clickElement(datenSchutz);
         ReusableMethods.waitForSeconds(4);
-        log.info("Datenschutz akzeptiert.");
+        log.info("Datenschutz akzeptiert");
     }
 
     public boolean isAbsendenButtonClickable() {
@@ -130,9 +130,9 @@ public class BewerbungsFomular {
     public void submitForm() {
         try {
             //ReusableMethods.clickElement(absenden);
-            log.info("Formular abgeschickt.");
+            log.info("Formular abgeschickt");
         } catch (Exception e) {
-            log.error("Fehler beim Absenden des Formulars.", e);
+            log.error("Fehler beim Absenden des Formulars", e);
             throw e;
         }
     }
