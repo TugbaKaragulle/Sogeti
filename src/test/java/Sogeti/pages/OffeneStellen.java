@@ -35,9 +35,9 @@ public class OffeneStellen {
         try {
             ReusableMethods.waitForElementToBeClickable(driver, suchFeld, 10);
             ReusableMethods.sendKeys(suchFeld, jobName);
-            ReusableMethods.waitForSeconds(4);
+            ReusableMethods.waitForSeconds(3);
             ReusableMethods.clickElement(searchButton);
-            ReusableMethods.waitForSeconds(4);
+            ReusableMethods.waitForSeconds(3);
             log.info("Job-Suche mit Begriff '{}' durchgeführt", jobName);
         } catch (Exception e) {
             log.error("Fehler bei Job-Suche mit '{}' ", jobName, e);

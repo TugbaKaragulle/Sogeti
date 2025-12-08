@@ -19,6 +19,8 @@ public class BewerbungsFomular {
         PageFactory.initElements(driver, this);
     }
 
+    //Elemente
+
     private By cookies = By.xpath("//button[text()='Alle akzeptieren']");
     private By vorname = By.id("id_first_name");
     private By nachname = By.id("id_last_name");
@@ -29,8 +31,8 @@ public class BewerbungsFomular {
     private By lebenslauf = By.name("cv");
     private By absenden = By.id("submit-id-submit");
 
+    // Methods
 
-    // Formular ausfüllen
     public void fillForm() {
         try {
             acceptCookies();
@@ -41,7 +43,7 @@ public class BewerbungsFomular {
             uploadCV();
             selectLocation();
             acceptTerms();
-            ReusableMethods.waitForSeconds(4);
+            ReusableMethods.waitForSeconds(3);
             log.info("Formular erfolgreich ausgefüllt");
         } catch (Exception e) {
             log.error("Fehler beim Ausfüllen des Formulars", e);
@@ -60,19 +62,19 @@ public class BewerbungsFomular {
 
     private void enterFirstName() {
         ReusableMethods.sendKeys(vorname, faker.name().firstName());
-        ReusableMethods.waitForSeconds(4);
+        ReusableMethods.waitForSeconds(3);
         log.info("Vorname eingegeben");
     }
 
     private void enterLastName() {
         ReusableMethods.sendKeys(nachname, faker.name().lastName());
-        ReusableMethods.waitForSeconds(4);
+        ReusableMethods.waitForSeconds(3);
         log.info("Nachname eingegeben");
     }
 
     private void enterEmail() {
         ReusableMethods.sendKeys(email, faker.internet().emailAddress());
-        ReusableMethods.waitForSeconds(4);
+        ReusableMethods.waitForSeconds(3);
         log.info("Email eingegeben");
     }
 
@@ -86,7 +88,7 @@ public class BewerbungsFomular {
         try {
             String absolutePath = "C:/Users/Tugba/IdeaProjects/Sogeti/Test Sogeti.docx";
             ReusableMethods.sendKeys(lebenslauf,absolutePath);
-            ReusableMethods.waitForSeconds(4);
+            ReusableMethods.waitForSeconds(3);
             log.info("Lebenslauf hochgeladen");
         } catch (Exception e) {
             log.error("Fehler beim Hochladen des Lebenslaufs", e);
@@ -96,13 +98,13 @@ public class BewerbungsFomular {
 
     private void selectLocation() {
         ReusableMethods.clickElement(standortFrankfurt);
-        ReusableMethods.waitForSeconds(4);
+        ReusableMethods.waitForSeconds(3);
         log.info("Standort 'Frankfurt' ausgewählt");
     }
 
     private void acceptTerms() {
         ReusableMethods.clickElement(datenSchutz);
-        ReusableMethods.waitForSeconds(4);
+        ReusableMethods.waitForSeconds(3);
         log.info("Datenschutz akzeptiert");
     }
 
@@ -126,7 +128,7 @@ public class BewerbungsFomular {
         }
     }
 
-    // Formular absenden (wird nicht genutzt!)
+    // (wird nicht genutzt!)
     public void submitForm() {
         try {
             //ReusableMethods.clickElement(absenden);

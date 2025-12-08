@@ -32,7 +32,7 @@ public class HomePage {
     //Methods
 
     public void removeCookies() {
-        ReusableMethods.waitForSeconds(4);
+        ReusableMethods.waitForSeconds(3);
         try {
             WebElement shadow = driver.findElement(shadowhost);
             SearchContext shadowRoot = shadow.getShadowRoot();
