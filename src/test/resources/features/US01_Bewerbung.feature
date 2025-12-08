@@ -5,6 +5,7 @@
     Given Der Benutzer geht zur Startseite
     And Entfernt das Cookies-Banner
 
+    @E2E
   Scenario: Job suchen und Bewerbung starten
     When Der Benutzer fährt mit der Maus über den Menüpunkt "Karriere"
     And Klickt auf den Link "Offene Stellen"
