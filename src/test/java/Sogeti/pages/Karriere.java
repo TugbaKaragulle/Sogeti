@@ -34,7 +34,6 @@ public class Karriere {
             ReusableMethods.visibilityOfElement(locator);
             ReusableMethods.clickElementByJS(locator);
             log.info("Erfolgreich auf '{}' geklickt", menuName);
-            ReusableMethods.waitForSeconds(2);
         } catch (Exception e) {
             log.error("Fehler beim Klick auf '{}' ", menuName, e);
             throw e;

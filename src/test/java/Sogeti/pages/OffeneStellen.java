@@ -35,9 +35,7 @@ public class OffeneStellen {
         try {
             ReusableMethods.waitForElementToBeClickable(driver, suchFeld, 10);
             ReusableMethods.sendKeys(suchFeld, jobName);
-            ReusableMethods.waitForSeconds(3);
             ReusableMethods.clickElement(searchButton);
-            ReusableMethods.waitForSeconds(3);
             log.info("Job-Suche mit Begriff '{}' durchgeführt", jobName);
         } catch (Exception e) {
             log.error("Fehler bei Job-Suche mit '{}' ", jobName, e);
@@ -65,7 +63,6 @@ public class OffeneStellen {
             actions.clickAndHold(driver.findElement(vertragsart)).perform();
             ReusableMethods.waitForElementToBeClickable(driver, fullTime, 10);
             ReusableMethods.clickElementByJS(fullTime);
-            ReusableMethods.waitForSeconds(4);
             log.info("Vertragsart 'Full-time' ausgewählt");
         } catch (Exception e) {
             log.error("Fehler beim Auswählen der Vertragsart", e);
@@ -99,7 +96,6 @@ public class OffeneStellen {
     public void clickApplyNow() {
         try {
             ReusableMethods.clickElement(job);
-            ReusableMethods.waitForSeconds(2);
             log.info("Auf 'Jetzt bewerben' geklickt.");
         } catch (Exception e) {
             log.error("Fehler beim Klick auf 'Jetzt bewerben'", e);
@@ -111,11 +107,8 @@ public class OffeneStellen {
         try {
             JavascriptUtils.seiteLangsamNachUntenScrollen(driver, 20);
             ReusableMethods.waitForElementToBeClickable(driver, mehrLaden, 10);
-            ReusableMethods.waitForSeconds(2);
             ReusableMethods.clickElement(mehrLaden);
-            ReusableMethods.waitForSeconds(2);
             JavascriptUtils.seiteLangsamNachUntenScrollen(driver, 5);
-            ReusableMethods.waitForSeconds(2);
             JavascriptUtils.scrollToVisibleElement(driver, suchFeld);
             ReusableMethods.waitForSeconds(4);
             log.info("Seite gescrollt und 'Mehr laden' geklickt");
