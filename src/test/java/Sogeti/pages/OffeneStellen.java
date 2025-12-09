@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -70,28 +71,21 @@ public class OffeneStellen {
         }
     }
 
-    public void selectJob(String keyword) {
-        boolean gefunden = false;
-        try {
+        public void selectJob(String keyword) {
             ReusableMethods.visibilityOfElements(gefundeneJobs);
+
             List<WebElement> jobList = driver.findElements(gefundeneJobs);
 
             for (WebElement element : jobList) {
                 if (element.getText().contains(keyword)) {
                     element.click();
-                    gefunden = true;
                     log.info("Job mit Begriff '{}' ausgewählt", keyword);
                     return;
                 }
             }
-            if (!gefunden) {
-                throw new NoSuchElementException("Kein Jobtitel mit dem Begriff '" + keyword + "' gefunden");
-            }
-        } catch (TimeoutException e) {
-            log.error("Die Jobliste konnte innerhalb der Wartezeit nicht geladen werden", e);
-            throw new NoSuchElementException("Jobliste konnte nicht geladen werden");
+            Assert.fail("Kein Jobtitel mit dem Begriff '" + keyword + "' gefunden");
         }
-    }
+
 
     public void clickApplyNow() {
         try {
