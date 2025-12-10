@@ -18,10 +18,6 @@ public class ReusableMethods {
         getDriver().findElement(by).click();
     }
 
-    public static WebElement clickElementByWebDriverWait(By by) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-        return wait.until(ExpectedConditions.elementToBeClickable(getDriver().findElement(by)));
-    }
 
     public static void clickElementByJS(By by) {
         WebElement element = getDriver().findElement(by);
@@ -36,17 +32,18 @@ public class ReusableMethods {
         return getDriver().findElement(by).isDisplayed();
     }
 
-    public static WebElement    visibilityOfElement(By by){
+    public static WebElement visibilityOfElement(By by){
         return getDriver().findElement(by);
     }
+
     public static List<WebElement>    visibilityOfElements(By by){
         return getDriver().findElements(by);
     }
+
     public static WebElement visibilityOfElementByWebDriverWait(By by) {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         return wait.until(ExpectedConditions.visibilityOf(getDriver().findElement(by)));
     }
-
 
     public static void waitForSeconds(int seconds) {
         try {
@@ -66,6 +63,7 @@ public class ReusableMethods {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
         return wait.until(ExpectedConditions.elementToBeClickable(by));
     }
+
 
 }
 
