@@ -63,12 +63,12 @@ public class Driver {
 
         if (driverThread.get() != null) {
             try {
-                Thread.sleep(3000); // Optional sleep, can be removed if not needed
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
             driverThread.get().quit();
-            driverThread.remove(); // Remove instance to prevent memory leaks
+            driverThread.remove();
             browserThread.remove();
         }
     }
